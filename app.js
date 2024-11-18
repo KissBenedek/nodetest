@@ -1,9 +1,13 @@
 import express from "express"
+import userRouter from "./routes/users.js"
 
 const app = express();
 const PORT = 3000;
 
 app.use(express.static("public"));
+app.use(express.json());
+
+app.use("/api/users", userRouter)
 
 app.get("/", (req, res, next) => {
     res.send("Hi, there!");
